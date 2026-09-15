@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tetris</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game">
+    <aside class="panel left">
+      <section class="box">
+        <h2>Hold</h2>
+        <canvas id="hold" width="120" height="120"></canvas>
+      </section>
+      <section class="box stats">
+        <h2>Pontos</h2>
+        <p id="score">0</p>
+        <h2>Linhas</h2>
+        <p id="lines">0</p>
+        <h2>Nível</h2>
+        <p id="level">1</p>
+        <h2>Recorde</h2>
+        <p id="best">0</p>
+      </section>
+    </aside>
+
+    <section class="stage">
+      <canvas id="board" width="300" height="600"></canvas>
+      <div id="overlay" class="overlay">
+        <h1>TETRIS</h1>
+        <p>Pressione <kbd>Enter</kbd> ou toque para começar</p>
+      </div>
+    </section>
+
+    <aside class="panel right">
+      <section class="box">
+        <h2>Próximas</h2>
+        <canvas id="next" width="120" height="330"></canvas>
+      </section>
+      <section class="box help">
+        <p><kbd>←</kbd><kbd>→</kbd> mover</p>
+        <p><kbd>↓</kbd> descer</p>
+        <p><kbd>↑</kbd> / <kbd>X</kbd> girar</p>
+        <p><kbd>Z</kbd> girar ao contrário</p>
+        <p><kbd>Espaço</kbd> queda rápida</p>
+        <p><kbd>C</kbd> segurar</p>
+        <p><kbd>P</kbd> pausa · <kbd>R</kbd> reiniciar</p>
+      </section>
+    </aside>
+  </main>
+
+  <nav class="touch" id="touch">
+    <button data-action="left">◀</button>
+    <button data-action="rotateCCW">↺</button>
+    <button data-action="rotateCW">↻</button>
+    <button data-action="right">▶</button>
+    <button data-action="hold">HOLD</button>
+    <button data-action="softDrop">▼</button>
+    <button data-action="hardDrop">⤓</button>
+    <button data-action="pause">II</button>
+  </nav>
+
+  <script src="js/config.js"></script>
+  <script src="js/pieces.js"></script>
+  <script src="js/board.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
