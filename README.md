@@ -24,6 +24,7 @@ npx serve -l 5181 .
 | Segurar peça       | C ou Shift            |
 | Pausar             | P ou Esc              |
 | Reiniciar          | R                     |
+| Trocar tema        | T                     |
 
 No celular aparecem botões de toque na parte de baixo da tela.
 
@@ -36,7 +37,8 @@ No celular aparecem botões de toque na parte de baixo da tela.
 - **Lock delay**: a peça só trava meio segundo depois de encostar
 - Pontuação clássica (100/300/500/800 × nível), bônus por soft e hard drop
 - Nível sobe a cada 10 linhas e a gravidade acelera
-- Recorde salvo no `localStorage`
+- Recorde salvo no `localStorage` e **ranking** com as 5 melhores partidas
+- **4 temas de cores** (Neon, Pastel, Retrô, Mono), escolha salva
 - Sons sintetizados via WebAudio
 - Auto-repeat lateral (DAS) e suporte a toque
 
@@ -50,6 +52,8 @@ js/pieces.js    # formas, rotação, 7-bag
 js/board.js     # grade, colisão, travamento, limpeza de linhas
 js/render.js    # desenho no canvas
 js/audio.js     # efeitos sonoros
+js/themes.js    # temas de cores
+js/highscores.js# ranking local
 js/input.js     # teclado, DAS e botões de toque
 js/game.js      # regras, estados e loop
 ```
