@@ -13,6 +13,7 @@ const KEYMAP = {
   KeyP: 'pause',
   Escape: 'pause',
   KeyR: 'restart',
+  KeyT: 'theme',
   Enter: 'start',
 };
 

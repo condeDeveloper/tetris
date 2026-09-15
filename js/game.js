@@ -12,6 +12,7 @@ class Game {
       overlay: document.getElementById('overlay'),
     };
     this.best = Number(localStorage.getItem('tetris-best') || 0);
+    Theme.apply(Theme.current);
     this.board = new Board();
     this.state = 'ready'; // ready | playing | paused | over
     this.flashRows = [];
@@ -55,6 +56,7 @@ class Game {
     }
     if (name === 'restart') { this.reset(); return this.start(); }
     if (name === 'pause') return this.togglePause();
+    if (name === 'theme') { this.toast(`Tema: ${Theme.next()}`); return; }
     if (this.state !== 'playing') return;
 
     switch (name) {
@@ -163,7 +165,22 @@ class Game {
   gameOver() {
     this.state = 'over';
     Sound.over();
-    this.showOverlay('GAME OVER', `<span class="big">${this.score} pontos</span><br><kbd>Enter</kbd> ou toque para jogar de novo`);
+    const pos = HighScores.add(this.score, this.lines, this.level);
+    const headline = pos === 1 ? '🏆 Novo recorde!' : pos ? `#${pos} no ranking` : '';
+    this.showOverlay('GAME OVER',
+      `<span class="big">${this.score} pontos</span>${headline ? `<br><em>${headline}</em>` : ''}` +
+      HighScores.html(pos) +
+      `<kbd>Enter</kbd> ou toque para jogar de novo`);
+  }
+
+  // Aviso rápido no canto (troca de tema etc.)
+  toast(msg) {
+    let el = document.getElementById('toast');
+    if (!el) { el = document.createElement('div'); el.id = 'toast'; document.body.appendChild(el); }
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(this.toastTimer);
+    this.toastTimer = setTimeout(() => el.classList.remove('show'), 1200);
   }
 
   // ---------- Loop ----------
