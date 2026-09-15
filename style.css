@@ -76,6 +76,23 @@ canvas { image-rendering: auto; }
 .overlay p { color: var(--muted); font-size: 14px; }
 .overlay .big { font-size: 28px; color: var(--text); font-weight: 700; }
 
+.overlay em { color: var(--accent); font-style: normal; font-weight: 700; font-size: 14px; }
+.ranking {
+  list-style: none; margin: 10px 0; width: 210px; text-align: left;
+  background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px;
+}
+.ranking li { display: grid; grid-template-columns: 22px 1fr auto; gap: 6px; align-items: baseline; padding: 3px 0; font-size: 13px; color: var(--muted); }
+.ranking li strong { color: var(--text); font-variant-numeric: tabular-nums; }
+.ranking li small { font-size: 10px; }
+.ranking li.me { color: var(--accent); }
+.ranking li.me strong { color: var(--accent); }
+#toast {
+  position: fixed; top: 16px; left: 50%; transform: translate(-50%, -20px);
+  background: var(--panel); border: 1px solid var(--accent); color: var(--text);
+  padding: 8px 16px; border-radius: 999px; font-size: 13px; opacity: 0; transition: all .2s; pointer-events: none; z-index: 10;
+}
+#toast.show { opacity: 1; transform: translate(-50%, 0); }
+
 .touch { display: none; }
 
 @media (max-width: 760px) {
